@@ -6,7 +6,7 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:28:45 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 15:24:55 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:04:55 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	init(t_fractol *f, int argc, char **argv)
 	f->img = mlx_new_image(f->mlx, f->mlx->width, f->mlx->height);
 	if (!f->img || mlx_image_to_window(f->mlx, f->img, 0, 0) < 0)
 		errors (f, mlx_image_failure);
-	f->zoom = 1.5;
 	f->iters = ITERS;
 	f->color_factor = color_factor(f);
 }

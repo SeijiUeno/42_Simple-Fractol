@@ -6,7 +6,7 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 00:05:01 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 15:34:24 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:04:14 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	zoom_in(t_fractol *f)
 	prev_span = f->y_spam;
 	f->y_spam *= 0.99;
 	f->y_offset -= (prev_span - f->y_spam) / 2;
-	f->zoom /= 0.99;
 }
 
 void	zoom_out(t_fractol *f)
@@ -47,5 +46,4 @@ void	zoom_out(t_fractol *f)
 	prev_span = f->y_spam;
 	f->y_spam *= 1.01;
 	f->y_offset -= (prev_span - f->y_spam) / 2;
-	f->zoom /= 1.01;
 }

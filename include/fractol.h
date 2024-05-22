@@ -6,7 +6,7 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:27:43 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 15:23:19 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:05:43 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define WIDTH 500
 # define HEIGHT 500
-# define ITERS 50
+# define ITERS 80
 
 enum				e_error
 {
@@ -48,7 +48,6 @@ typedef struct s_fractol_setup
 	double			y_offset;
 	double			x_seed;
 	double			y_seed;
-	double			zoom;
 	double			iters;
 	double			color_factor;
 	unsigned int	(*fractal_function)(double, double, void *);
