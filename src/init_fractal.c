@@ -6,7 +6,7 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 05:19:27 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 15:27:48 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:29:29 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	init_mandelbrot(t_fractol *f, int argc)
 	f->y_spam = 3;
 	f->x_offset = 2.3;
 	f->y_offset = 1.5;
+	f->zoom_of_interest_x = 1.5;
+	f->zoom_of_interest_y = 0.0;
 }
 
 static void	init_julia(t_fractol *f, int argc, char **argv)
@@ -34,14 +36,16 @@ static void	init_julia(t_fractol *f, int argc, char **argv)
 	f->y_offset = 1.6;
 	if (argc == 2)
 	{
-		f->x_seed = -0.8;
-		f->y_seed = 0.156;
+		f->x_seed = 0.285;
+		f->y_seed = 0.01;
 	}
 	else
 	{
 		f->x_seed = ft_atof(argv[2]);
 		f->y_seed = ft_atof(argv[3]);
 	}
+	f->zoom_of_interest_x = 0.560;
+	f->zoom_of_interest_y = 0.316;
 }
 
 

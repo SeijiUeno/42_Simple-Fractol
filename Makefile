@@ -6,7 +6,7 @@
 #    By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 05:26:51 by sueno-te          #+#    #+#              #
-#    Updated: 2024/05/22 15:31:24 by sueno-te         ###   ########.fr        #
+#    Updated: 2024/05/22 16:50:59 by sueno-te         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_FILES			=	draw_fractal.c	\
 						err.c			\
 						hooks.c			\
 						init.c			\
-						fractol.c		\
+						fractal.c		\
 						main.c			\
 						zoom.c		\
 						rgba.c

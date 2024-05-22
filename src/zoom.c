@@ -6,34 +6,28 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 00:05:01 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 16:04:14 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:29:47 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	quit(t_fractol *f, int exit_type)
+void adjust_offset(double *offset, double span, double new_span, double point_of_interest)
 {
-	if (f->img)
-		mlx_delete_image(f->mlx, f->img);
-	if (f->mlx)
-	{
-		mlx_close_window(f->mlx);
-		mlx_terminate(f->mlx);
-	}
-	exit (exit_type);
+    *offset = point_of_interest - (point_of_interest - *offset) * (new_span / span);
 }
 
-void	zoom_in(t_fractol *f)
+void zoom_in(t_fractol *f)
 {
-	double	prev_span;
+    double	prev_span;
 
-	prev_span = f->x_spam;
-	f->x_spam *= 0.99;
-	f->x_offset -= (prev_span - f->x_spam) / 2;
-	prev_span = f->y_spam;
-	f->y_spam *= 0.99;
-	f->y_offset -= (prev_span - f->y_spam) / 2;
+    prev_span = f->x_spam;
+    f->x_spam *= 0.99;
+    adjust_offset(&f->x_offset, prev_span, f->x_spam, f->zoom_of_interest_x);
+
+    prev_span = f->y_spam;
+    f->y_spam *= 0.99;
+    adjust_offset(&f->y_offset, prev_span, f->y_spam, f->zoom_of_interest_y);
 }
 
 void	zoom_out(t_fractol *f)

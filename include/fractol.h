@@ -6,7 +6,7 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:27:43 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 16:05:43 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:27:14 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include "MLX42/MLX42.h"
 # include "libft.h"
 
-# define WIDTH 500
-# define HEIGHT 500
-# define ITERS 80
+# define WIDTH 800
+# define HEIGHT 800
+# define ITERS 100
 
 enum				e_error
 {
@@ -49,7 +49,8 @@ typedef struct s_fractol_setup
 	double			x_seed;
 	double			y_seed;
 	double			iters;
-	double			color_factor;
+	double			zoom_of_interest_x;
+	double			zoom_of_interest_y;
 	unsigned int	(*fractal_function)(double, double, void *);
 }					t_fractol;
 

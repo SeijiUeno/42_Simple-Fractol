@@ -6,50 +6,46 @@
 /*   By: sueno-te <rflseijiueno@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 00:06:00 by sueno-te          #+#    #+#             */
-/*   Updated: 2024/05/22 15:05:31 by sueno-te         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:29:11 by sueno-te         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static double	ft_x_value(const t_fractol *f, int x_coord)
+static double get_scaled_value(double coord, double span, double offset, int size)
 {
-	double	relative_x;
-	double	x_value;
-
-	relative_x = (double)x_coord / f->img->width;
-	x_value = relative_x * f->x_spam - f->x_offset;
-	return (x_value);
+    double relative_coord;
+	
+	relative_coord = (double)(coord / size);
+    return (relative_coord * span - offset);
 }
 
-static double	ft_y_value(const t_fractol *f, int y_coord)
+static double ft_x_value(const t_fractol *f, int x_coord)
 {
-	double	relative_y;
-	double	y_value;
-
-	relative_y = (double)y_coord / f->img->width;
-	y_value = relative_y * f->y_spam - f->y_offset;
-	return (y_value);
+    return (get_scaled_value(x_coord, f->x_spam, f->x_offset, f->img->width));
 }
 
-void	draw_fractal(t_fractol	*f)
+static double ft_y_value(const t_fractol *f, int y_coord)
 {
-	double			x;
-	double			y;
-	double			z;
-	uint32_t		i;
-	uint32_t		j;
+    return (get_scaled_value(y_coord, f->y_spam, f->y_offset, f->img->height));
+}
 
-	i = -1;
-	while (++i < f->img->width)
-	{
-		j = -1;
-		while (++j < f->img->height)
-		{
+void draw_fractal(t_fractol *f)
+{
+	double		x;
+	double		y;
+	double		z;
+	uint32_t	i;
+	uint32_t	j;
+	
+    for (i = 0; i < f->img->width; i++)
+    {
+        for (j = 0; j < f->img->height; j++)
+        {
 			x = ft_x_value(f, i);
 			y = ft_y_value(f, j);
-			z = f->fractal_function(x, y, f) * f->color_factor;
+			z = f->fractal_function(x, y, f) * color_factor(f);
 			mlx_put_pixel(f->img, i, j, psico_scheme(z));
-		}
-	}
+        }
+    }
 }
